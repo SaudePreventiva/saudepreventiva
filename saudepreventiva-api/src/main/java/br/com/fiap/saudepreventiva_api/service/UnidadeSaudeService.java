@@ -1,7 +1,7 @@
 package br.com.fiap.saudepreventiva_api.service;
 
-import br.com.fiap.saudepreventiva_api.model.Atendimento;
-import br.com.fiap.saudepreventiva_api.repository.AtendimentoRepository;
+import br.com.fiap.saudepreventiva_api.model.UnidadeSaude;
+import br.com.fiap.saudepreventiva_api.repository.UnidadeSaudeRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,33 +14,33 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
-public class AtendimentoService {
+public class UnidadeSaudeService {
 
-    private final AtendimentoRepository repo;
+    private final UnidadeSaudeRepository repo;
 
     @Transactional
-    public Atendimento criar(@Valid Atendimento atendimento) {
-        return repo.save(atendimento);
+    public UnidadeSaude criar(@Valid UnidadeSaude unidade) {
+        return repo.save(unidade);
     }
 
     @Transactional(readOnly = true)
-    public List<Atendimento> listar() {
+    public List<UnidadeSaude> listar() {
         return repo.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Atendimento buscarPorId(String id) {
+    public UnidadeSaude buscarPorId(String id) {
         return repo.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Atendimento não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unidade de saúde não encontrada"));
     }
 
     @Transactional
-    public Atendimento atualizar(String id, @Valid Atendimento dados) {
-        Atendimento existente = buscarPorId(id);
+    public UnidadeSaude atualizar(String id, @Valid UnidadeSaude dados) {
+        UnidadeSaude existente = buscarPorId(id);
 
+        existente.setNome(dados.getNome());
+        existente.setEndereco(dados.getEndereco());
         existente.setTipo(dados.getTipo());
-        existente.setDataAtendimento(dados.getDataAtendimento());
-        existente.setObservacoes(dados.getObservacoes());
 
         return repo.save(existente);
     }

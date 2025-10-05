@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -20,9 +20,6 @@ public class PacienteService {
 
     @Transactional
     public Paciente criar(@Valid Paciente paciente) {
-        if (repo.existsByCpf(paciente.getCpf())) {
-            throw new ResponseStatusException(CONFLICT, "CPF já cadastrado");
-        }
         return repo.save(paciente);
     }
 
@@ -41,10 +38,6 @@ public class PacienteService {
     public Paciente atualizar(String id, @Valid Paciente dados) {
         Paciente existente = buscarPorId(id);
 
-        if (!existente.getCpf().equals(dados.getCpf()) && repo.existsByCpf(dados.getCpf())) {
-            throw new ResponseStatusException(CONFLICT, "CPF já cadastrado");
-        }
-
         existente.setNome(dados.getNome());
         existente.setCpf(dados.getCpf());
         existente.setDataNascimento(dados.getDataNascimento());
@@ -56,7 +49,6 @@ public class PacienteService {
 
     @Transactional
     public void deletar(String id) {
-        Paciente existente = buscarPorId(id);
-        repo.delete(existente);
+        repo.delete(buscarPorId(id));
     }
 }

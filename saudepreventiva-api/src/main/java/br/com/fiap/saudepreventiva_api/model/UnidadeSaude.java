@@ -3,29 +3,32 @@ package br.com.fiap.saudepreventiva_api.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import java.time.LocalDate;
+
 import java.util.UUID;
 
 @Entity
-@Table(name = "ATENDIMENTOS")
+@Table(name = "UNIDADES_SAUDE")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class Atendimento {
+public class UnidadeSaude {
 
     @Id
     @Column(length = 36)
     private String id;
 
     @NotBlank
-    @Size(max = 50)
-    @Column(nullable = false, length = 50)
-    private String tipo; // CONSULTA, EXAME, etc.
+    @Size(min = 3, max = 120)
+    @Column(nullable = false, length = 120)
+    private String nome;
 
-    @NotNull
-    private LocalDate dataAtendimento;
+    @NotBlank
+    @Size(min = 3, max = 120)
+    @Column(nullable = false, length = 120)
+    private String endereco;
 
-    @Size(max = 500)
-    private String observacoes;
+    @NotBlank
+    @Column(length = 50, nullable = false)
+    private String tipo; // UBS, CLINICA_POPULAR, POSTO_SAUDE
 
     @PrePersist
     public void gerarId() {
