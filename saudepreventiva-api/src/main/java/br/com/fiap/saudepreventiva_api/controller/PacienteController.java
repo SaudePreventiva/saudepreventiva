@@ -41,6 +41,7 @@ public class PacienteController {
         return ResponseEntity.ok(service.atualizar(id, paciente));
     }
 
+    //deletar
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable String id) {
         service.deletar(id);
