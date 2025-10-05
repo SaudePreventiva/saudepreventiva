@@ -1,22 +1,23 @@
 # Saúde Preventiva API
 
-API REST desenvolvida em **Spring Boot 3 + Java 17** como parte da disciplina de **Java Advanced**.  
-O projeto faz parte da **Plataforma de Saúde Preventiva**, que centraliza dados médicos para UBS, clínicas populares e postos de saúde.
+API REST desenvolvida em Spring Boot 3 + Java 17 como parte da disciplina de Java Advanced.
+O projeto integra a **Plataforma de Saúde Preventiva**, que centraliza dados médicos de UBS, clínicas populares e postos de saúde, visando a prevenção de doenças e o acompanhamento de pacientes de forma digital.
 
 ---
 
 ## 🎯 Objetivos
-- Implementação de um **CRUD REST** para o domínio **Paciente**.  
-- Utilização de **JPA/Hibernate** com banco **H2** (substituindo Oracle temporariamente).  
-- Aplicar validações com **Bean Validation**.  
-- Respeitar os conceitos de **POO, coesão, desacoplamento** e **REST nível 1 (Richardson)**.  
-- Garantir persistência e recuperação de dados testados via **Insomnia**.  
+- Implementar CRUDs REST (Create, Read, Update, Delete) para os principais domínios da plataforma:
+Paciente, Atendimento, Alerta de Risco, Profissional de Saúde e Unidade de Saúde.
+- Aplicar validações com Bean Validation e mapeamento JPA/Hibernate.
+- Respeitar os princípios de POO, coesão, baixo acoplamento e REST Nível 1 (Richardson).
+- Utilizar o banco H2 para persistência local (substituindo temporariamente o Oracle Database 23ai).
+- Testar todos os endpoints via Insomnia e garantir a persistência e recuperação corretas dos dados.
 
 ---
 
 ## 🛠️ Tecnologias
 - Java 17 (LTS)  
-- Spring Boot 3  
+- Spring Boot 3.5.x
 - H2 Database (desenvolvimento)  
 - JPA / Hibernate  
 - Bean Validation  
@@ -46,6 +47,7 @@ O projeto faz parte da **Plataforma de Saúde Preventiva**, que centraliza dados
     - Senha: (vazio)
 
 ## 📚 Endpoints da Sprint 1 (Paciente)
+Paciente
 | Método | Endpoint                 | Descrição                 |
 | ------ | ------------------------ | ------------------------- |
 | POST   | `/api/v1/pacientes`      | Cadastrar paciente        |
@@ -54,16 +56,51 @@ O projeto faz parte da **Plataforma de Saúde Preventiva**, que centraliza dados
 | PUT    | `/api/v1/pacientes/{id}` | Atualizar paciente        |
 | DELETE | `/api/v1/pacientes/{id}` | Excluir paciente          |
 
+Atendimento
+| Método | Endpoint                    | Descrição                    |
+| ------ | --------------------------- | ---------------------------- |
+| POST   | `/api/v1/atendimentos`      | Registrar atendimento        |
+| GET    | `/api/v1/atendimentos`      | Listar todos os atendimentos |
+| GET    | `/api/v1/atendimentos/{id}` | Buscar atendimento por ID    |
+| PUT    | `/api/v1/atendimentos/{id}` | Atualizar atendimento        |
+| DELETE | `/api/v1/atendimentos/{id}` | Excluir atendimento          |
+
+Alerta de Risco
+| Método | Endpoint               | Descrição            |
+| ------ | ---------------------- | -------------------- |
+| POST   | `/api/v1/alertas`      | Cadastrar alerta     |
+| GET    | `/api/v1/alertas`      | Listar alertas       |
+| GET    | `/api/v1/alertas/{id}` | Buscar alerta por ID |
+| PUT    | `/api/v1/alertas/{id}` | Atualizar alerta     |
+| DELETE | `/api/v1/alertas/{id}` | Excluir alerta       |
+
+Profissional de Saúde
+| Método | Endpoint                     | Descrição                  |
+| ------ | ---------------------------- | -------------------------- |
+| POST   | `/api/v1/profissionais`      | Cadastrar profissional     |
+| GET    | `/api/v1/profissionais`      | Listar profissionais       |
+| GET    | `/api/v1/profissionais/{id}` | Buscar profissional por ID |
+| PUT    | `/api/v1/profissionais/{id}` | Atualizar profissional     |
+| DELETE | `/api/v1/profissionais/{id}` | Excluir profissional       |
+
+Unidade de Saúde
+| Método | Endpoint                | Descrição                  |
+| ------ | ----------------------- | -------------------------- |
+| POST   | `/api/v1/unidades`      | Cadastrar unidade de saúde |
+| GET    | `/api/v1/unidades`      | Listar unidades de saúde   |
+| GET    | `/api/v1/unidades/{id}` | Buscar unidade por ID      |
+| PUT    | `/api/v1/unidades/{id}` | Atualizar unidade de saúde |
+| DELETE | `/api/v1/unidades/{id}` | Excluir unidade de saúde   |
+
 ## 📂 Testes no Insomnia
 
-Todos os endpoints foram testados no **Insomnia** e exportados para validação pelo professor.  
+Todos os endpoints foram **testados individualmente** no Insomnia. Os testes contemplam **POST, GET, PUT e DELETE** para cada entidade.
 
 Para importar:
-1. Baixe o arquivo [Insomnia_2025-10-02.yaml](docs/Insomnia_2025-10-02.yaml) deste repositório.
+1. Baixe o arquivo [Insomnia_2025-10-05.yaml](docs/Insomnia_2025-10-05.yaml) deste repositório.
 2. Abra o Insomnia → `Application` → `Preferences` → `Data` → `Import Data`.
 3. Selecione o arquivo `.yaml`.
 4. As requisições de `POST`, `GET`, `PUT` e `DELETE` estarão prontas para uso.
-
 
 ## 👥 Equipe
 - Maria Eduarda Fernandes Rocha - RM: 560657
