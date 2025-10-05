@@ -1,0 +1,701 @@
+type: collection.insomnia.rest/5.0
+name: Saude Preventiva API
+meta:
+  id: wrk_85756183b7344c4a915c3292ef8b6f39
+  created: 1759407591380
+  modified: 1759623037256
+  description: ""
+collection:
+  - name: Paciente
+    meta:
+      id: fld_9827f17272d94146872ebefa4a1884ac
+      created: 1759407778344
+      modified: 1759623037252
+      sortKey: -1759407778345
+      description: ""
+    children:
+      - url: "{{ base_url }}/api/v1/pacientes"
+        name: Cadastrar
+        meta:
+          id: req_4e54a529ae8b4e63beda4d42ddfd7b63
+          created: 1759407782507
+          modified: 1759634801468
+          isPrivate: false
+          description: ""
+          sortKey: -1759407782507
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Maria Souza",
+              "cpf": "12345678901",
+              "dataNascimento": "1990-05-10",
+              "email": "maria@email.com",
+              "telefone": "11999999999"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/pacientes/a8f28fea-5b38-435e-a589-59c7753003f9"
+        name: Buscar
+        meta:
+          id: req_bb7bd92200794932b49abb7efbf64645
+          created: 1759408739470
+          modified: 1759623951625
+          isPrivate: false
+          description: ""
+          sortKey: -1759407782407
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/pacientes/a8f28fea-5b38-435e-a589-59c7753003f9"
+        name: Atualizar
+        meta:
+          id: req_492f0119597f4e53a20a9e7450940a75
+          created: 1759408841572
+          modified: 1759623958343
+          isPrivate: false
+          description: ""
+          sortKey: -1759407782307
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Maria Almeida",
+              "cpf": "12345678901",
+              "dataNascimento": "1990-05-10",
+              "email": "maria.almeida@email.com",
+              "telefone": "11988887777"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/pacientes"
+        name: Listar
+        meta:
+          id: req_be21b790c4c8405f885767d6b6c77516
+          created: 1759408911147
+          modified: 1759623943728
+          isPrivate: false
+          description: ""
+          sortKey: -1759407782457
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/pacientes/{id_paciente}"
+        name: Deletar
+        meta:
+          id: req_451da2ee01c648e992d99650d8fae757
+          created: 1759408934245
+          modified: 1759626046215
+          isPrivate: false
+          description: ""
+          sortKey: -1759407782207
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Atendimento
+    meta:
+      id: fld_b90d1df00783470eae86b34408f748e3
+      created: 1759623047599
+      modified: 1759623083293
+      sortKey: -1759623080205
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/api/v1/atendimentos"
+        name: Criar
+        meta:
+          id: req_3d76e0d44a0c4bb48f6597d6d070ad50
+          created: 1759623080105
+          modified: 1759634767799
+          isPrivate: false
+          description: ""
+          sortKey: -1759623185454
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "tipo": "CONSULTA",
+              "dataAtendimento": "2025-10-05",
+              "observacoes": "Retorno de rotina"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/atendimentos"
+        name: Listar
+        meta:
+          id: req_e19ffa8893fa4eb4868db445b29244e3
+          created: 1759623181252
+          modified: 1759623917723
+          isPrivate: false
+          description: ""
+          sortKey: -1759623185354
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/atendimentos/295d31d3-bc09-40ee-9cfa-d18a23f074ba"
+        name: Buscar
+        meta:
+          id: req_f43046237067454d91521928056ed537
+          created: 1759623575399
+          modified: 1759636124021
+          isPrivate: false
+          description: ""
+          sortKey: -1759623185254
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/atendimentos/{id_atendimento}"
+        name: Deletar
+        meta:
+          id: req_5af0db7045184339bd07327748f2e9e8
+          created: 1759623639162
+          modified: 1759626035318
+          isPrivate: false
+          description: ""
+          sortKey: -1759623185154
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/atendimentos/295d31d3-bc09-40ee-9cfa-d18a23f074ba"
+        name: Atualizar
+        meta:
+          id: req_d344a167889b4262ace8dba7631a6087
+          created: 1759623832942
+          modified: 1759636224947
+          isPrivate: false
+          description: ""
+          sortKey: -1759623185204
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            
+            {
+              "severidade": "BAIXA",
+              "origem": "PROFISSIONAL",
+              "mensagem": "Revisão de resultados de exame",
+              "status": "ABERTO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Alerta
+    meta:
+      id: fld_ff7c99edb361448a9807539ad01a0d5c
+      created: 1759625244520
+      modified: 1759625253433
+      sortKey: -1759625250662
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/api/v1/alertas"
+        name: Criar
+        meta:
+          id: req_8627b8992fa548ad95ab0cfbab03c619
+          created: 1759625250562
+          modified: 1759634789606
+          isPrivate: false
+          description: ""
+          sortKey: -1759625256089
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "severidade": "ALTA",
+              "origem": "PROFISSIONAL",
+              "mensagem": "Risco de hipertensão detectado.",
+              "status": "ABERTO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/alertas"
+        name: Listar
+        meta:
+          id: req_4690227e6dec4eb9b9edb0a71c8b9b31
+          created: 1759625386358
+          modified: 1759625899865
+          isPrivate: false
+          description: ""
+          sortKey: -1759625255989
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/alertas/b7149358-955f-4d2b-a7fb-448abbc1fd37"
+        name: Buscar
+        meta:
+          id: req_394e7361dba34b7baefab855a63a7309
+          created: 1759625479099
+          modified: 1759636260538
+          isPrivate: false
+          description: ""
+          sortKey: -1759625255889
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/alertas/b7149358-955f-4d2b-a7fb-448abbc1fd37"
+        name: Atualizar
+        meta:
+          id: req_e3c7c2361812456c8fda007fe7150312
+          created: 1759625916335
+          modified: 1759636306095
+          isPrivate: false
+          description: ""
+          sortKey: -1759625255789
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"id": "b7149358-955f-4d2b-a7fb-448abbc1fd37",
+            	"severidade": "BAIXA",
+            	"origem": "PROFISSIONAL",
+            	"mensagem": "Risco de hipertensão detectado.",
+            	"status": "ABERTO",
+            	"criadoEm": "2025-10-05T00:49:35.106543"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/alertas/{id_alerta}"
+        name: Deletar
+        meta:
+          id: req_80dca54dd40e41938455b1ff8dccbdc2
+          created: 1759625997081
+          modified: 1759626027952
+          isPrivate: false
+          description: ""
+          sortKey: -1759625255689
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Profissional
+    meta:
+      id: fld_c6d6a0da6af9432588a5128b2edcbc6d
+      created: 1759626572954
+      modified: 1759626575475
+      sortKey: -1759626572954
+      description: ""
+    children:
+      - url: "{{ _.base_url
+          }}/api/v1/profissionais/35498029-e120-4b3a-b827-6aac14fd41a6"
+        name: Atualizar
+        meta:
+          id: req_fb99e8a43cff433bbc7cd1560cbad188
+          created: 1759626587651
+          modified: 1759626746882
+          isPrivate: false
+          description: ""
+          sortKey: -1759626588836
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Dr. Felipe Lima",
+              "registro": "CRM654321",
+              "cargo": "Cardiologista"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/profissionais/{id_profissonal}"
+        name: Deletar
+        meta:
+          id: req_0d98233af645454395523898e6fe0486
+          created: 1759626592951
+          modified: 1759626760954
+          isPrivate: false
+          description: ""
+          sortKey: -1759626588736
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url
+          }}/api/v1/profissionais/35498029-e120-4b3a-b827-6aac14fd41a6"
+        name: Buscar
+        meta:
+          id: req_bf8d2bbaf1d041db836641f528399a29
+          created: 1759626595637
+          modified: 1759626716573
+          isPrivate: false
+          description: ""
+          sortKey: -1759626588936
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/profissionais"
+        name: Cadastrar
+        meta:
+          id: req_31176f4e84644f358859923c5fd25bd3
+          created: 1759626598097
+          modified: 1759626640579
+          isPrivate: false
+          description: ""
+          sortKey: -1759626589036
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Dra. Fernanda Alves",
+              "registro": "CRM123456",
+              "cargo": "Médico"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/profissionais"
+        name: Listar
+        meta:
+          id: req_8426ccbca4544eb385be43f58cef01cb
+          created: 1759626600559
+          modified: 1759626672010
+          isPrivate: false
+          description: ""
+          sortKey: -1759626588986
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Unidades
+    meta:
+      id: fld_06f9593a3dde477e93bb1772765207b4
+      created: 1759633813517
+      modified: 1759633813517
+      sortKey: -1759633813517
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/api/v1/unidades/{id_unidade}"
+        name: Deletar
+        meta:
+          id: req_a8b7fcacede649dfb43a1b94b8a1b176
+          created: 1759633816700
+          modified: 1759633970472
+          isPrivate: false
+          description: ""
+          sortKey: -1759633822449
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/unidades/cdd3987f-9843-4216-b187-1fca73f5b735"
+        name: Atualizar
+        meta:
+          id: req_e6ae43d716c946678b048fc4781a4427
+          created: 1759633818032
+          modified: 1759633951887
+          isPrivate: false
+          description: ""
+          sortKey: -1759633822549
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "UBS Central",
+              "endereco": "Av. Brasil, 950",
+              "tipo": "POSTO_SAUDE"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/unidades"
+        name: Cadastrar
+        meta:
+          id: req_10a3fdd94e5343d7a92d7bdd6652bc2a
+          created: 1759633819266
+          modified: 1759633909315
+          isPrivate: false
+          description: ""
+          sortKey: -1759633822649
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "UBS Jardim das Flores",
+              "endereco": "Rua das Palmeiras, 120",
+              "tipo": "UBS"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/unidades"
+        name: Buscar
+        meta:
+          id: req_17ea70fe49f646c28c381c2b38fe5e39
+          created: 1759633820133
+          modified: 1759633937889
+          isPrivate: false
+          description: ""
+          sortKey: -1759633822599
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/v1/unidades"
+        name: Listar
+        meta:
+          id: req_70b3108faff34d4482a6f8dc92c7c008
+          created: 1759633821116
+          modified: 1759633896726
+          isPrivate: false
+          description: ""
+          sortKey: -1759633822624
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4ea86e4529229e607803a6f33bae7bcda1f0e995
+    created: 1759623037309
+    modified: 1759623037309
+environments:
+  name: Base Environment
+  meta:
+    id: env_4ea86e4529229e607803a6f33bae7bcda1f0e995
+    created: 1759407591384
+    modified: 1759623037250
+    isPrivate: false
+  data:
+    base_url: http://localhost:8080
+    pacienteId: '""'
