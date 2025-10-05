@@ -1,11 +1,7 @@
 package br.com.fiap.saudepreventiva_api.service;
 
 import br.com.fiap.saudepreventiva_api.model.AlertaRisco;
-import br.com.fiap.saudepreventiva_api.model.Atendimento;
-import br.com.fiap.saudepreventiva_api.model.Paciente;
 import br.com.fiap.saudepreventiva_api.repository.AlertaRiscoRepository;
-import br.com.fiap.saudepreventiva_api.repository.AtendimentoRepository;
-import br.com.fiap.saudepreventiva_api.repository.PacienteRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,25 +17,9 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 public class AlertaRiscoService {
 
     private final AlertaRiscoRepository repo;
-    private final PacienteRepository pacienteRepo;
-    private final AtendimentoRepository atendimentoRepo;
 
     @Transactional
     public AlertaRisco criar(@Valid AlertaRisco alerta) {
-        // 🔹 Valida paciente obrigatório
-        Paciente p = pacienteRepo.findById(alerta.getPaciente().getId())
-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Paciente não encontrado"));
-        alerta.setPaciente(p);
-
-        // 🔹 Valida atendimento (opcional)
-        if (alerta.getAtendimento() != null && alerta.getAtendimento().getId() != null) {
-            Atendimento a = atendimentoRepo.findById(alerta.getAtendimento().getId())
-                    .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Atendimento não encontrado"));
-            alerta.setAtendimento(a);
-        } else {
-            alerta.setAtendimento(null);
-        }
-
         return repo.save(alerta);
     }
 
@@ -62,20 +42,6 @@ public class AlertaRiscoService {
         existente.setOrigem(dados.getOrigem());
         existente.setMensagem(dados.getMensagem());
         existente.setStatus(dados.getStatus());
-
-        if (dados.getPaciente() != null && dados.getPaciente().getId() != null) {
-            Paciente p = pacienteRepo.findById(dados.getPaciente().getId())
-                    .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Paciente não encontrado"));
-            existente.setPaciente(p);
-        }
-
-        if (dados.getAtendimento() != null && dados.getAtendimento().getId() != null) {
-            Atendimento a = atendimentoRepo.findById(dados.getAtendimento().getId())
-                    .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Atendimento não encontrado"));
-            existente.setAtendimento(a);
-        } else {
-            existente.setAtendimento(null);
-        }
 
         return repo.save(existente);
     }
