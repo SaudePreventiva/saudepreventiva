@@ -102,6 +102,11 @@ Para importar:
 3. Selecione o arquivo `.yaml`.
 4. As requisições de `POST`, `GET`, `PUT` e `DELETE` estarão prontas para uso.
 
+## 📑 Documentação da API (Swagger/OpenAPI)
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- OpenAPI (JSON): http://localhost:8080/v3/api-docs
+- OpenAPI (YAML): http://localhost:8080/v3/api-docs.yaml
+
 ## 👥 Equipe
 - Maria Eduarda Fernandes Rocha - RM: 560657
 - Victor de Carvalho Alves - RM: 560395
